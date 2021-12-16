@@ -28,30 +28,39 @@
     (load "agenda.lisp")
 ```
 
-* Execute as funções da agenda,
+* Para adicionar eventos na agenda acesse o arquivo ("eventos.lisp") e adicione uma linha seguindo aseguinte ordem:
 ``` lisp
-    (calendario :ano 2021)
+    (:inicio '(2021 1  7 19) :fim '(2021 1  7 22) :nome "Jantar Empresa")
+```
+  Na qual, primeiro é especificado as informações sobre o inicio do evento, o primeiro parâmetro é o ano, em seguida o mês, o dia e a hora. A segunda parte deve ser preenchida 
+  com informações sobre o fim desse evento, acompanhado dos mesmos campos da seção de inicio, sendo eles: ano, mês, dia e hora, assim respectivamente. E por último, deve ser 
+  adicionado o nome do evento em questão. 
+  
+  
+* A agenda possui três funções(calendario, calendario-eventos e mostra-eventos). Para executar a função calendário basta invocar da seguinte forma:
+``` lisp
+    (calendario :ano 2021 :mes 7 :dia 10)
+```
+O programa deve retornar essa data, para sinalizar caso exista algum evento nesse dia especificado, o dia aparecerá destacado do um asterisco '*'.
+``` lisp
+    
+```
+Para a função calendário, o único parâmetro obrigatório é o do ano, todos os outros são opcionais.
+
+* A função calendario-eventos tem como objetivo listar todos os meses de um ano especifico, com todos os dias e os dias com eventos sinalizados por um asterisco. Para chamar
+esta função basta:
+``` lisp
     (calendario-eventos :ano 2021)
-    (mostra-eventos :ano 2021)
 ```
+Para essa função o parâmetro 'ano' é obrigatório.
 
-* Exemplo da função calendário:
+* A função mostra-eventos tem como objetivo listar todos os eventos encontrados de acordo como os campos invocados na função. Sua chamada se dá, pela seguinte forma:
 ``` lisp
-    (calendario :ano 2021)
-        ;; Irá retornar todos os meses e dias daquele ano
-
-    (calendario :ano 2021 :mes-especifico 7)
-        ;; Irá retornar os dias para o mês específico
-
-    (calendario :ano 2021 :mes-inicial 7)
-        ;; Irá retornar os dias para os meses 7 a 12 (inclusivo)
-
-    (calendario :ano 2021 :mes-final 9)
-        ;; Irá retornar os dias para os meses 1 a 9 (inclusivo)
-
-    (calendario :ano 2021 :mes-inicial 7 :mes-final 9)
-        ;; Irá retornar os dias para os meses 7 a 9 (inclusivo)
-
-    (calendario :ano 2021 :mes-inicial 7 :mes-final 9 :mes-especifico 3)
-        ;; Irá retornar os dias para o mês específico, somente
+    (mostra-eventos :ano 2021 :mes 1 :dia 12)
 ```
+Irá assim retornar o evento na data especificada, caso não encontre nenhum, retornará NIL. Para a função mostra-eventos, o único parâmetro obrigatório é o do ano, todos os 
+outros são opcionais.
+
+
+
+
